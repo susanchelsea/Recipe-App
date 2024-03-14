@@ -13,35 +13,80 @@
         {% csrf_token %}
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <input type="text" class="form-control" id="name" value="{{recipe.name}}" name="name">
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
             <select class="form-select" name="category" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-                <option value="Desert">Desert</option>
-                <option value="Snacks">Snacks</option>
-                <option value="Side Dish">Side Dish</option>
+                {% if recipe.category == 'Breakfast' %}
+                    <option selected value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Desert">Desert</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Side Dish">Side Dish</option>
+
+                {% elif recipe.category == 'Lunch' %}
+                    <option value="Breakfast">Breakfast</option>
+                    <option selected value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Desert">Desert</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Side Dish">Side Dish</option>
+                
+                {% elif recipe.category == 'Dinner' %}
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option selected value="Dinner">Dinner</option>
+                    <option value="Desert">Desert</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Side Dish">Side Dish</option>
+
+                {% elif recipe.category == 'Desert' %}
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option selected value="Desert">Desert</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Side Dish">Side Dish</option>
+
+                {% elif recipe.category == 'Snacks' %}
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Desert">Desert</option>
+                    <option selected value="Snacks">Snacks</option>
+                    <option value="Side Dish">Side Dish</option>
+
+                {% elif recipe.category == 'Side Dish' %}
+                    <option value="Breakfast">Breakfast</option>
+                    <option selected value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Desert">Desert</option>
+                    <option value="Snacks">Snacks</option>
+                    <option selected value="Side Dish">Side Dish</option>
+                {% endif %}
               </select>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
-          <textarea class="form-control" name="description" id="description" style="height: 100px"></textarea>
+          <textarea class="form-control" name="description" id="description" style="height: 100px">{{recipe.description}}</textarea>
         </div>
         <div class="mb-3">
           <label for="ingredients" class="form-label">Ingredients</label>
-          <textarea class="form-control" name="ingredients" id="ingredients" style="height: 100px"></textarea>
+          <textarea class="form-control" name="ingredients" id="ingredients" style="height: 100px">{{recipe.ingredients}}</textarea>
         </div>
         <div class="mb-3">
           <label for="process" class="form-label">Process</label>
-          <textarea class="form-control" name="process" id="process" style="height: 100px"></textarea>
+          <textarea class="form-control" name="process" id="process" style="height: 100px">{{recipe.process}}</textarea>
         </div>
         <div class="mb-3">
-          <label for="picture" class="form-label">Upload Picture</label>
-          <input type="file" class="form-control"  name="picture" id="picture">
+            <label for="existing_picture" class="form-label">Existing Picture</label>
+            <img src="{{ recipe.picture.url }}" alt="Recipe Picture" style="height: 100px">
+        </div>
+        <div class="mb-3">
+          <label for="picture" class="form-label">Upload new Picture</label>
+          <input type="file" class="form-control" name="picture" id="picture">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

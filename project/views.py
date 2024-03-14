@@ -21,4 +21,20 @@ def create(request):
 
 def edit(request,pk):
     recipe_obj = Recipe.objects.get(id=pk)
-    return render(request, 'edit.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        category = request.POST.get('category')
+        description = request.POST.get('description')
+        ingredients = request.POST.get('ingredients')
+        process = request.POST.get('process')
+        picture = request.FILES.get('picture')
+        recipe_obj.name = name
+        recipe_obj.category = category
+        recipe_obj.description = description
+        recipe_obj.ingredients = ingredients
+        recipe_obj.process = process
+        recipe_obj.picture = picture
+        recipe_obj.save()
+        return redirect('home')
+    data = {'recipe': recipe_obj}
+    return render(request, 'edit.html', context=data)
