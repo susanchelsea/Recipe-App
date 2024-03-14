@@ -6,3 +6,6 @@ def home(request):
     recipe_objs = Recipe.objects.all()
     data = {'recipes':recipe_objs}
     return render(request, 'home.html', context=data)
+
+def create(request):
+    return render(request, 'create.html')
