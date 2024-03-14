@@ -16,14 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from project.views import home, create
+from project.views import home, create, edit
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home'),
-    path('create/', create, name='create' )
+    path('create/', create, name='create'),
+    path('edit/<int:pk>/', edit, name='edit')
 ]
 
 if settings.DEBUG:

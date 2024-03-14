@@ -19,6 +19,7 @@
             <th scope="col">Process</th>
             <th scope="col">Ingredients</th>
             <th scope="col">Picture</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                 <td>{{recipe.process}}</td>
                 <td>{{recipe.ingredients}}</td>
                 <td><img src="{{ recipe.picture.url }}" alt="{{ recipe.name }}" style="max-width: 100px;"></td>
+                <td><a href="{% url 'edit' pk=recipe.id %}"><button>Edit</button></a> <button>Delete</button></td>
               </tr>
           {% endfor %}
         </tbody>

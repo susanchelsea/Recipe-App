@@ -18,3 +18,7 @@ def create(request):
         Recipe.objects.create(name=name,category=category,description=description,ingredients=ingredients,process=process,picture=picture)
         return redirect('home')
     return render(request, 'create.html')
+
+def edit(request,pk):
+    recipe_obj = Recipe.objects.get(id=pk)
+    return render(request, 'edit.html')
