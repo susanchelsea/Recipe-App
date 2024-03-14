@@ -38,3 +38,8 @@ def edit(request,pk):
         return redirect('home')
     data = {'recipe': recipe_obj}
     return render(request, 'edit.html', context=data)
+
+def delete(request,pk):
+    recipe_obj = Recipe.objects.get(id=pk)
+    recipe_obj.delete()
+    return redirect('home')
