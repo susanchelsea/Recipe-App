@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Recipe
 
 # Create your views here.
@@ -16,4 +16,5 @@ def create(request):
         process = request.POST.get('process')
         picture = request.FILES.get('picture')
         Recipe.objects.create(name=name,category=category,description=description,ingredients=ingredients,process=process,picture=picture)
+        return redirect('home')
     return render(request, 'create.html')
