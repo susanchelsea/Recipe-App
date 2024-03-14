@@ -9,38 +9,40 @@
 </head>
 <body>
     <h1>This is a create page</h1>
-    <form>
+
+    <form method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" name="category" aria-label="Default select example">
                 <option selected>Open this select menu</option>
-                <option value="1">Breakfast</option>
-                <option value="2">Lunch</option>
-                <option value="3">Dinner</option>
-                <option value="3">Desert</option>
-                <option value="3">Snacks</option>
-                <option value="3">Side Dish</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Desert">Desert</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Side Dish">Side Dish</option>
               </select>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
-          <textarea class="form-control" id="description" style="height: 100px"></textarea>
+          <textarea class="form-control" name="description" id="description" style="height: 100px"></textarea>
         </div>
         <div class="mb-3">
           <label for="ingredients" class="form-label">Ingredients</label>
-          <textarea class="form-control" id="ingredients" style="height: 100px"></textarea>
+          <textarea class="form-control" name="ingredients" id="ingredients" style="height: 100px"></textarea>
         </div>
         <div class="mb-3">
           <label for="process" class="form-label">Process</label>
-          <textarea class="form-control" id="process" style="height: 100px"></textarea>
+          <textarea class="form-control" name="process" id="process" style="height: 100px"></textarea>
         </div>
         <div class="mb-3">
           <label for="picture" class="form-label">Upload Picture</label>
-          <input type="file" class="form-control" id="picture">
+          <input type="file" class="form-control"  name="picture" id="picture">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
