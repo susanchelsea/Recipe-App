@@ -43,3 +43,10 @@ def delete(request,pk):
     recipe_obj = Recipe.objects.get(id=pk)
     recipe_obj.delete()
     return redirect('home')
+
+def delete_all(request):
+    recipe_obj = Recipe.objects.all()
+    if request.method == 'POST':
+        recipe_obj.delete()
+        return redirect('home')
+    return render(request, 'delete_all.html')
